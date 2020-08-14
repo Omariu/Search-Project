@@ -14,3 +14,12 @@ body {
   padding: 10px;
   font-size: 22px;
 }
+
+#app-search {
+  padding: 10px;
+  font-size: 22px;
+}
+select {
+  margin-bottom: 10px;
+  width: 220px;
+}

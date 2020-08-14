@@ -11,9 +11,30 @@ const LoadMap = () => {
       container: "viewDiv",
       map: map,
       zoom: 3,
+      popup: {
+        dockEnabled: true,
+        dockOptions: {
+          breakpoint: false,
+          buttonEnabled: false,
+          position: "bottom-center",
+        },
+      },
     });
 
     ViewUI();
+
+    HerarchicalSearch.LoadAllStates();
+
+    document.querySelector("#ddlStates").onchange = () => {
+      const stateName = document.querySelector("#ddlStates").value;
+      HerarchicalSearch.LoadCountiesByState(stateName);
+      HerarchicalSearch.ZoomToState(stateName);
+    };
+
+    document.querySelector("#ddlCounties").onchange = () => {
+      const name = document.querySelector("#ddlCounties").value;
+      HerarchicalSearch.ZoomToCounties(name);
+    };
   });
 };
 
@@ -24,7 +45,8 @@ const ViewUI = () => {
     "esri/widgets/ScaleBar",
     "esri/widgets/BasemapToggle",
     "esri/widgets/Search",
-  ], function (Home, Compass, ScaleBar, BasemapToggle, Search) {
+    "esri/widgets/Expand",
+  ], function (Home, Compass, ScaleBar, BasemapToggle, Search, Expand) {
     view.ui.add(["app-title"], "top-left");
 
     view.ui.add(
@@ -65,5 +87,13 @@ const ViewUI = () => {
       position: "top-right",
       index: 2,
     });
+
+    let hSearch = new Expand({
+      expandIconClass: "esri-icon-layer-list", // see https://developers.arcgis.com/javascript/latest/guide/esri-icon-font/
+      view: view,
+      content: document.querySelector("#app-search"),
+      expanded: true,
+    });
+    view.ui.add(hSearch, "top-right");
   });
 };
