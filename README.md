@@ -4,12 +4,18 @@ This is a Search App
 
 Main points 
 
-Tntro to the application
+Tntro to the application 
+
 Intro to Herarchical Search
+
 Initializing application
+
 Display Map
+
 Understanding Map UI and Css
+
 Adding widgets (Home,Compass,ScaleBar,BasemapToggle,Search,Expand)
+
 Using Query and QueryTask
 Using Geometries, Symbols and Graphcis
 Using Popup
