@@ -74,7 +74,7 @@ const ViewUI = () => {
     view.ui.add(
       new BasemapToggle({
         view: view,
-        nextBasemap: "dark-gary",
+        nextBasemap: "dark-gray",
       }),
       "bottom-right"
     );
